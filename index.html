@@ -8,7 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
+
 </head>
 <body> 
 
@@ -25,17 +26,25 @@
     </div>
  
     <div class="form-group">
+      <label for="latitude2">To Location Latitude:</label>
+      <input type="text" class="form-control" readonly id="latitude2" placeholder="To Location Latitude" name="latitude2">
+    </div>
+    <div class="form-group">
+      <label for="longitude2">To Location Longitude:</label>
+      <input type="text" class="form-control" readonly id="longitude2" placeholder="To Location Longitude" name="longitude2">
+    </div>
+    <div class="form-group">
       <label for="distance">Distance:</label>
       <input type="text" class="form-control" readonly id="distance" placeholder="Distance will get by google map api" name="distance">
     </div>
     <div class="form-group">
-      <label for="duration">Duration:</label>
-      <input type="text" class="form-control" readonly id="duration" placeholder="Duration will get by google map api" name="duration">
+      <label for="finalArrive">Time of Arrival:</label>
+      <input type="text" class="form-control" readonly id="finalArrive" placeholder="Calculated arrival time in ms" name="finalArrive">
     </div>
     <button type="button" class="btn btn-default" id="submit">A Button</button>
   </form>
 </div>
-   </div>
+   </div> 
     <script>
           function initMap() {
             // This is default latitude and longitude
@@ -43,7 +52,6 @@
             var longitude1 = -0.36;
             var latitude2 = 40.40;
             var longitude2 = -3.68;
-            var distance;
             // This is autocomplete for input from location and to location
             var from_location = document.getElementById('from_location');
             var to_location = document.getElementById('to_location');
@@ -60,27 +68,48 @@
                 var place = toautocomplete.getPlace();
                 latitude2 = place.geometry.location.lat();
                 longitude2 = place.geometry.location.lng();
-                   
+                
+                console.log(latitude2)
+                console.log(longitude2)
+                
+                var todayTime=Date.now();
+                   console.log(todayTime);
                     var service = new google.maps.DistanceMatrixService();
                       service.getDistanceMatrix({
                         origins: [from_location.value],
                         destinations: [to_location.value],
                         travelMode: google.maps.TravelMode.TRANSIT,
-                        unitSystem: google.maps.UnitSystem.METRIC,
+                        unitSystem: google.maps.UnitSystem.IMPERIAL,
                         avoidHighways: false,
                         avoidTolls: false
-                    }, function (response, status) {
+                    }, 
+                    
+                    
+                    function (response, status) {
                         if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
                             var distance = response.rows[0].elements[0].distance.text;
-                            var duration = response.rows[0].elements[0].duration.text;
+                            var duration = response.rows[0].elements[0].duration.value;
+                          
+                            console.log(distance)
+                            
                             $('#distance').val(distance);
-                            $('#duration').val(duration);
-                 
+                            $('#latitude2').val(latitude2);
+                            $('#longitude2').val(longitude2);
+                            
                         } else {
                             alert("Unable to find the distance via road.");
                         }
+                      durationM = duration * 1000
+                      arrivalTime = todayTime + durationM
+
+                      var d = new Date(arrivalTime);
+                       d.toLocaleString('en-US',{month:"2-digit",day: "2-digit", year:"2-digit", hour: "2-digit", minute: "2-digit"},);
+                       console.log(d.toLocaleString('en-US',{month:"2-digit",day: "2-digit", year:"2-digit", hour: "2-digit", minute: "2-digit"},))
+                       var finalArrive = d.toLocaleString('en-US',{month:"2-digit",day: "2-digit", year:"2-digit", hour: "2-digit", minute: "2-digit"},);
+                       console.log(finalArrive);
+                       $('#finalArrive').val(finalArrive);
                     });
-                });
+                }); 
                 
         }
     </script>

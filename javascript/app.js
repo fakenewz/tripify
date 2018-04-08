@@ -11,14 +11,23 @@ var config = {
 //button for adding trains
 $('#submit').on('click', function(){
     event.preventDefault();
-    //gets user input
-    var duration = $('#duration').val().trim();
-    console.log(duration)
-    //creates local holder for train times
-    var tripInfo = {
-        time: duration,
-    };
-    database.set(tripInfo);
 
-    console.log(tripInfo.time)
+    var latitude2 = $('#latitude2').val().trim();
+    var longitude2 = $('#longitude2').val().trim();
+    var finalArrive = $('#finalArrive').val().trim();
+    var distance = $('#distance').val().trim();
+    
+    
+    var trip = {
+        latitude: latitude2,
+        longitude: longitude2,
+        distance: distance,
+        finalArrive: finalArrive,
+    }
+
+    database.set(trip);
+    console.log(trip.latitude)
+    console.log(trip.longitude)
+    console.log(trip.finalArrive)
+    
 });
