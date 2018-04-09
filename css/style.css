@@ -1,0 +1,26 @@
+body {
+    background: url('./../images/map_image.JPG') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+   }
+
+.panel-body a {
+    word-break: break-all;
+  }
+
+  .articleHeadline {
+    line-height: 1.5;
+  }
+
+  .eventful-small {     
+    position: relative    !important;
+    width: 100px          !important;
+    font-size: 11px       !important;
+    line-height: 11px     !important;
+    float: right;
+    margin-right: 50px;
+  }
+
+  .panel {
+    margin-top: 50px;
+  }

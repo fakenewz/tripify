@@ -1,120 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Google map api example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
+ <title>Google map api example</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="./css/style.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
 
 </head>
-<body> 
+<body>
 
 <div class="container">
-  <h2>Form</h2>
-  <form>
-    <div class="form-group">
-      <label for="from_location">From Location:</label>
-      <input type="text" class="form-control" id="from_location" placeholder="Enter from location" name="from_location">
-    </div>
-      <div class="form-group">
-      <label for="to_location">To Location:</label>
-      <input type="text" class="form-control" id="to_location" placeholder="Enter to location" name="to_location">
-    </div>
- 
-    <div class="form-group">
-      <label for="latitude2">To Location Latitude:</label>
-      <input type="text" class="form-control" readonly id="latitude2" placeholder="To Location Latitude" name="latitude2">
-    </div>
-    <div class="form-group">
-      <label for="longitude2">To Location Longitude:</label>
-      <input type="text" class="form-control" readonly id="longitude2" placeholder="To Location Longitude" name="longitude2">
-    </div>
-    <div class="form-group">
-      <label for="distance">Distance:</label>
-      <input type="text" class="form-control" readonly id="distance" placeholder="Distance will get by google map api" name="distance">
-    </div>
-    <div class="form-group">
-      <label for="finalArrive">Time of Arrival:</label>
-      <input type="text" class="form-control" readonly id="finalArrive" placeholder="Calculated arrival time in ms" name="finalArrive">
-    </div>
-    <button type="button" class="btn btn-default" id="submit">A Button</button>
-  </form>
-</div>
-   </div> 
-    <script>
-          function initMap() {
-            // This is default latitude and longitude
-            var latitude1 = 39.46; 
-            var longitude1 = -0.36;
-            var latitude2 = 40.40;
-            var longitude2 = -3.68;
-            // This is autocomplete for input from location and to location
-            var from_location = document.getElementById('from_location');
-            var to_location = document.getElementById('to_location');
-            var fromautocomplete = new google.maps.places.Autocomplete(from_location);
-            var toautocomplete = new google.maps.places.Autocomplete(to_location);
-            // Get from lat and lang 
-             google.maps.event.addListener(fromautocomplete, 'place_changed', function () {
-                var place = fromautocomplete.getPlace();
-                latitude1 = place.geometry.location.lat();
-                longitude1 = place.geometry.location.lng();
-                });
-            // get to to lat and lang
-             google.maps.event.addListener(toautocomplete, 'place_changed', function () {
-                var place = toautocomplete.getPlace();
-                latitude2 = place.geometry.location.lat();
-                longitude2 = place.geometry.location.lng();
-                
-                console.log(latitude2)
-                console.log(longitude2)
-                
-                var todayTime=Date.now();
-                   console.log(todayTime);
-                    var service = new google.maps.DistanceMatrixService();
-                      service.getDistanceMatrix({
-                        origins: [from_location.value],
-                        destinations: [to_location.value],
-                        travelMode: google.maps.TravelMode.TRANSIT,
-                        unitSystem: google.maps.UnitSystem.IMPERIAL,
-                        avoidHighways: false,
-                        avoidTolls: false
-                    }, 
-                    
-                    
-                    function (response, status) {
-                        if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
-                            var distance = response.rows[0].elements[0].distance.text;
-                            var duration = response.rows[0].elements[0].duration.value;
-                          
-                            console.log(distance)
-                            
-                            $('#distance').val(distance);
-                            $('#latitude2').val(latitude2);
-                            $('#longitude2').val(longitude2);
-                            
-                        } else {
-                            alert("Unable to find the distance via road.");
-                        }
-                      durationM = duration * 1000
-                      arrivalTime = todayTime + durationM
+<div class="row">
+        <div class="col-sm-12">
+        
+          <!-- First panel is for handling the search parameters -->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+               
+                  <h3><strong>Plan your trip on the go! </strong></h3>
+              </h3>
+            </div>
 
-                      var d = new Date(arrivalTime);
-                       d.toLocaleString('en-US',{month:"2-digit",day: "2-digit", year:"2-digit", hour: "2-digit", minute: "2-digit"},);
-                       console.log(d.toLocaleString('en-US',{month:"2-digit",day: "2-digit", year:"2-digit", hour: "2-digit", minute: "2-digit"},))
-                       var finalArrive = d.toLocaleString('en-US',{month:"2-digit",day: "2-digit", year:"2-digit", hour: "2-digit", minute: "2-digit"},);
-                       console.log(finalArrive);
-                       $('#finalArrive').val(finalArrive);
-                    });
-                }); 
-                
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj0_c4X1vR7VUUaoBk3l9X7DGeGeyt3P8&libraries=geometry,places&callback=initMap"
-        async defer></script>
-    <script type="text/javascript" src="./javascript/app.js"></script> 
-</body>
+
+  <div class="panel-body">
+ 
+  <form>
+ 
+   <div class="form-group">
+     <label for="from_location">From Location:</label>
+     <input type="text" class="form-control" id="from_location" placeholder="Enter from location" name="from_location">
+   </div>
+     <div class="form-group">
+     <label for="to_location">To Location:</label>
+     <input type="text" class="form-control" id="to_location" placeholder="Enter to location" name="to_location">
+   </div>
+
+   <div class="form-group">
+     <label for="latitude2">To Location Latitude:</label>
+     <input type="text" class="form-control" readonly id="latitude2" placeholder="To Location Latitude" name="latitude2">
+   </div>
+   <div class="form-group">
+     <label for="longitude2">To Location Longitude:</label>
+     <input type="text" class="form-control" readonly id="longitude2" placeholder="To Location Longitude" name="longitude2">
+   </div>
+   <div class="form-group">
+     <label for="distance">Distance:</label>
+     <input type="text" class="form-control" readonly id="distance" placeholder="Distance will get by google map api" name="distance">
+   </div>
+   <div class="form-group">
+     <label for="finalArrive">Time of Arrival:</label>
+     <input type="text" class="form-control" readonly id="finalArrive" placeholder="Calculated arrival time in ms" name="finalArrive">
+   </div>
+   <button type="button" class="btn btn-default" id="submit">A Button</button>
+ </form>
+</div>
+  </div>
+
+ <!-- Results section -->
+
+   <div class="row">
+    <div class="col-sm-12">
+      <br>
+    
+      <div class="panel panel-primary">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <strong>
+              <i class="fa fa-table"></i> Event results</strong>
+          </h3>
+        </div>
+
+        <div class="panel-body" id="well-section">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Region -->
+  <div class="row">
+    <div class="col-sm-12">
+
+      <!-- Line Break followed by closing -->
+      <hr>
+      <h5 class="text-center">
+        <small><strong>Made with lots and lots of <i class="fa fa-heart"> from FAKENEWZ LLC <i class="far fa-copyright"></i> 2018 - All rights reserved</i>
+        </strong></small>
+      </h5>
+    </div><div class="eventful-badge eventful-small">
+      <img src="http://api.eventful.com/images/powered/eventful_58x20.gif"
+        alt="Local Events, Concerts, Tickets">
+      <p><a href="http://eventful.com/">Events</a> by Eventful</p>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOLE7iIYxS9pIeme4NZrQF8AEP5D1P76w&libraries=geometry,places&callback=initMap"
+       async defer></script>
+
+      <script src="./javascript/trip.js"></script>                          
+
+    </body>
 </html>
