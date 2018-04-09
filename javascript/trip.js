@@ -92,7 +92,7 @@ $('#submit').on('click', function(){
                        $('#finalArrive').val(finalArrive); 
                     });
               
-    var queryURL1 = "http://api.eventful.com/json/events/search?app_key=g6TsjTdbZ8MMtB3k&where=" + latitude2 + "," + longitude2 + "&within=1&sort_order=popularity&date=" + finalArrive + "00&page_size=10&page_number=1&format=json&callback=?";
+    var queryURL1 = "https://api.eventful.com/json/events/search?app_key=g6TsjTdbZ8MMtB3k&where=" + latitude2 + "," + longitude2 + "&within=1&sort_order=popularity&date=" + finalArrive + "00&page_size=10&page_number=1&format=json&callback=?";
     console.log("URL: " + queryURL1);
               
     $.ajax({
