@@ -45,13 +45,6 @@ We end with our team name and logos from any api's that requested their logo be 
 
 HTML, CSS, Javascript, DateJs, CORS, Firebase, Github Pages, Github, FontAwesome, Jquery  
 
-<b>Contributing: </b>
-
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us
-
-<b>Versioning: </b>
-
-We use SemVer for versioning. For the versions available, see the tags on this repository
 
 <b>Authors: </b>
 
@@ -64,11 +57,6 @@ We use SemVer for versioning. For the versions available, see the tags on this r
 •:headphones: Mike Gomez - Initial work - https://github.com/fakenewz/tripify
 
 
-See also the list of contributors who participated in this project:
-
-
-<b>License:</b>
-This project is licensed under the MIT License - see the LICENSE.md file for details
 
 <b>Acknowledgments:</b>
 
