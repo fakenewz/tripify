@@ -46,6 +46,7 @@ We end with our team name and logos from any api's that requested their logo be 
 HTML, CSS, Javascript, DateJs, CORS, Firebase, Github Pages, Github, FontAwesome, Jquery  
 
 
+
 <b>Authors: </b>
 
 •:microphone: Whitney Shirk – Initial work – https://github.com/fakenewz/tripify
@@ -63,8 +64,6 @@ HTML, CSS, Javascript, DateJs, CORS, Firebase, Github Pages, Github, FontAwesome
 •Hat tip to anyone whose code was used
 
 •Inspiration
-
-•etc
 
 •Google Maps API
 
