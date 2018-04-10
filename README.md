@@ -55,13 +55,13 @@ We use SemVer for versioning. For the versions available, see the tags on this r
 
 Authors: 
 
-•Mike Gomez - Initial work - https://github.com/fakenewz/tripify
+•:microphone: Whitney Shirk – Initial work – https://github.com/fakenewz/tripify
 
-•Whitney Shirk – Initial Work – https://github.com/fakenewz/tripify
+•:saxophone: Sean Som – Initial work - https://github.com/fakenewz/tripify
 
-•Sean Som – Initial Work - https://github.com/fakenewz/tripify
+•:guitar: Winnie Wu – Initial work - https://github.com/fakenewz/tripify
 
-•Winnie Wu – Initial Work - https://github.com/fakenewz/tripify
+•:headphones: Mike Gomez - Initial work - https://github.com/fakenewz/tripify
 
 
 See also the list of contributors who participated in this project:
