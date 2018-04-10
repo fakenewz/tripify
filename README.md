@@ -49,13 +49,13 @@ HTML, CSS, Javascript, DateJs, CORS, Firebase, Github Pages, Github, FontAwesome
 
 <b>Authors: </b>
 
-•:microphone: Whitney Shirk – Initial work – https://github.com/fakenewz/tripify
+:microphone: Whitney Shirk – Initial work – https://github.com/fakenewz/tripify
 
-•:saxophone: Sean Som – Initial work - https://github.com/fakenewz/tripify
+:saxophone: Sean Som – Initial work - https://github.com/fakenewz/tripify
 
-•:guitar: Winnie Wu – Initial work - https://github.com/fakenewz/tripify
+:guitar: Winnie Wu – Initial work - https://github.com/fakenewz/tripify
 
-•:headphones: Mike Gomez - Initial work - https://github.com/fakenewz/tripify
+:headphones: Mike Gomez - Initial work - https://github.com/fakenewz/tripify
 
 
 
