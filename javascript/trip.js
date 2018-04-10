@@ -106,7 +106,7 @@ $('#submit').on('click', function(){
          console.log("Look here: " + queryURL1);
          console.log(response);
 
-    for(var i = 0; i < 5; i++) {
+    for(var i = 0; i < 10; i++) {
     
             $("#well-section").append("<div><br><br>" + response.events.event[i].venue_name + "<br>" + response.events.event[i].title + "<br>" + response.events.event[i].start_time + "</div>");
 
