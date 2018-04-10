@@ -41,7 +41,7 @@ We end with our team name and logos from any api's that requested their logo be 
 
 ![alt text](https://github.com/fakenewz/tripify/blob/master/images/2018-04-10%2012_50_10-Tripify.png)
 
-<b>Built With:
+<b>Built With:</b>
 
 HTML, CSS, Javascript, DateJs, CORS, Firebase, Github Pages, Github, FontAwesome, Jquery  
 
