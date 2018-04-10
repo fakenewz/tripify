@@ -1,25 +1,25 @@
-Tripify: 
+<h2><b>Tripify:</b></h2>
 
 Our Tripify project is an app that enables the user to provide a 'start location' and 'end location' to get a duration of how long it's going to take to get to their destination. From there, the app pulls that information and lets the user know what events are going on when they arrive at their destination
 
 
-Getting Started: 
+<b>Getting Started:</b> 
 
 In order to access the app, please visit: https://fakenewz.github.io/tripify/. From here you'll be able to enter in your information and test the app to see all of its great functionalities. We recommend testing out different locations to see what events are listed in what cities but don't try to drive to London because you can't drive across the water, lol...
 
-Prerequisites: 
+<b>Prerequisites: </b>
 
 The app is available on all browsers and fully functional. 
 If you're using Google Chrome, please download “Allow-Control-Allow-Origin” to fully access all the functionalities of the app. 
 Allow-Control-Allow-Origin location: 
 https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
 
-Installing: 
+<b>Installing: </b>
 
 No installation required
 
 
-Running the tests: 
+<b>Running the tests: </b>
 
 The app works as follows:
 The user enters in a starting location; when the user enters a starting location, the input field will begin to give the user an auto-fill option of locations that begin with the letters that the user inputs. This option gives the user flexibility and convenience to access their information quicker and without committing an error in the location that they're selecting
@@ -35,25 +35,25 @@ From there, the app leads the user to hit the 'Submit' button and from there is 
 
 We end with our team name and logos from any api's that requested their logo be displayed if we used their services
 
-Screenshots:
+<b>Screenshots:</b>
 
 ![alt text](https://github.com/fakenewz/tripify/blob/master/images/2018-04-10%2012_46_16-Tripify.png)
 
 ![alt text](https://github.com/fakenewz/tripify/blob/master/images/2018-04-10%2012_50_10-Tripify.png)
 
-Built With:
+<b>Built With:
 
 HTML, CSS, Javascript, DateJs, CORS, Firebase, Github Pages, Github, FontAwesome, Jquery  
 
-Contributing: 
+<b>Contributing: </b>
 
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us
 
-Versioning: 
+<b>Versioning: </b>
 
 We use SemVer for versioning. For the versions available, see the tags on this repository
 
-Authors: 
+<b>Authors: </b>
 
 •:microphone: Whitney Shirk – Initial work – https://github.com/fakenewz/tripify
 
@@ -67,10 +67,10 @@ Authors:
 See also the list of contributors who participated in this project:
 
 
-License:
+<b>License:</b>
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
-Acknowledgments:
+<b>Acknowledgments:</b>
 
 •Hat tip to anyone whose code was used
 
