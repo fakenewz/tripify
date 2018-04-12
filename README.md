@@ -71,7 +71,7 @@ HTML, CSS, Javascript, DateJs, Moment.js, CORS, Firebase, Github Pages, Github, 
 
 •Allow-Control-Allow-Origin extension
 
-•Olivia
+•Olivia and Steve
 
 •The Team!
 
