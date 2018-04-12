@@ -67,7 +67,7 @@ $('#submit').on('click', function(){
                 avoidTolls: false
         }, 
                                
-       function(response, status) {
+        function(response, status) {
             if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
                 var distance = response.rows[0].elements[0].distance.text;
                 var duration = response.rows[0].elements[0].duration.value;
@@ -85,17 +85,17 @@ $('#submit').on('click', function(){
                       arrivalTime = todayTime + durationM;
 
                       var d = new Date(arrivalTime);
-                       d.toLocaleString('en-US',{month:"2-digit",day: "2-digit", year:"numeric", hour: "2-digit", minute: "2-digit"},);
-                       console.log(d.toLocaleString('en-US',{month:"2-digit",day: "2-digit", year:"numeric", hour: "2-digit", minute: "2-digit"},))
                        var finalArrive = d.toLocaleString('en-US',{month:"2-digit",day: "2-digit", year:"numeric", hour: "2-digit", minute: "2-digit"},);
                        console.log(finalArrive);
                        $('#finalArrive').val(finalArrive); 
                     });
-              
-    var queryURL1 = "https://api.eventful.com/json/events/search?app_key=g6TsjTdbZ8MMtB3k&where=" + latitude2 + "," + longitude2 +"&within=1&sort_order=popularity&date=" + document.getElementById('finalArrive').value + "00&page_size=10&page_number=10&format=json&callback=?";
-    console.log("URL: " + queryURL1);
     
-   $('#submit').on('click', function(){             
+                    
+        var queryURL1 = "http://api.eventful.com/json/events/search?app_key=g6TsjTdbZ8MMtB3k&where=" + latitude2 + "," + longitude2 + "&within=1&sort_order=popularity&date=" + finalArrive + "&page_size=10&page_number=15&format=json&callback=?";
+        console.log("URL: " + queryURL1);
+
+        
+$('#submit').on('click', function(){            
     $.ajax({
       url: queryURL1,
       method: "GET",
@@ -106,11 +106,20 @@ $('#submit').on('click', function(){
          console.log("Look here: " + queryURL1);
          console.log(response);
 
-    for(var i = 0; i < 10; i++) {
-    
-            $("#well-section").append("<div><br><br>" + response.events.event[i].venue_name + "<br>" + response.events.event[i].title + "<br>" + response.events.event[i].start_time + "</div>");
+    for(var i = 0; i < 15; i++) { 
 
-            if (!response.events.event[i].image || response.events.event[i].image.medium.url === "http://d1marr3m5x4iac.cloudfront.net/store/skin/no_image/categories/128x128/other.jpg" && !response.events.event[i].venue_url) {
+        var dateTarget = response.events.event[i].start_time;
+
+        var dateSlice = dateTarget.slice(0,-9);
+        console.log("Test :" + dateSlice);  
+     
+        console.log("String2: " + (moment(finalArrive).isBefore(dateSlice)));
+
+        if ((moment(finalArrive).isBefore(dateSlice)) === true) { 
+            $("#well-section").append("<div><br><br>" + response.events.event[i].venue_name + "<br>" + response.events.event[i].title + "<br>" + response.events.event[i].start_time + "</div>");
+    
+
+           if (!response.events.event[i].image || response.events.event[i].image.medium.url === "http://d1marr3m5x4iac.cloudfront.net/store/skin/no_image/categories/128x128/other.jpg" && !response.events.event[i].venue_url) {
                 console.log("HIDE")
             } else if (response.events.event[i].image && response.events.event[i].image.medium.url !== "http://d1marr3m5x4iac.cloudfront.net/store/skin/no_image/categories/128x128/other.jpg" && response.events.event[i].venue_url) {
                 console.log("IMAGE: " + response.events.event[i].image.medium.url);
@@ -148,9 +157,12 @@ $('#submit').on('click', function(){
                 document.getElementById("well-section").appendChild(aHref);
              }
             imgFunction2();
-        } 
-      } 
-    }); 
-   });
+           } 
+         } else {
+            console.log("Date past");
+         }  
+        }
+     }); 
+    });
   }); 
-};     
+}; 
