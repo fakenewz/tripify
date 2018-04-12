@@ -43,7 +43,7 @@ We end with our team name and logos from any api's that requested their logo be 
 
 <b>Built With:</b>
 
-HTML, CSS, Javascript, DateJs, CORS, Firebase, Github Pages, Github, FontAwesome, Jquery  
+HTML, CSS, Javascript, DateJs, Moment.js, CORS, Firebase, Github Pages, Github, FontAwesome, Jquery  
 
 
 
